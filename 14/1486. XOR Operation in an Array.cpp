@@ -6,7 +6,8 @@ public:
             ret ^= start + (n << 1);
         return ret;
     }
-    int xorOperation(int n, int start) {
+    
+    int xorOperation(int n, int start) { // 2n ^ (2n+1) = 1
         bool n_odd = n & 1;
         bool least = start & n_odd;
         int ret;
