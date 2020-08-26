@@ -1,42 +1,41 @@
 class Solution {
-public:
     using Vec = vector<tuple<int, int, int>>;
-    Vec helper(Vec v) {
-        int n = v.size();
-        if(n < 2)
-            return v;
-        int m = n >> 1;
-        auto b = v.begin();
-        Vec left = helper(Vec(b, b + m));
-        Vec right = helper(Vec(b + m, v.end()));
+    Vec v, temp;
+    Vec::iterator v_beg, temp_beg;
+    void helper(int b, int e) {
+        if(e - b < 2)
+            return;
+        int m = (b + e) >> 1;
+        helper(b, m);
+        helper(m, e);
+        copy(v_beg + b, v_beg + e, temp_beg + b);
         int count = 0;
-        auto li = left.begin(), le = left.end();
-        auto ri = right.begin(), re = right.end();
-        while(li != le && ri != re) {
-            if(get<1>(*li) > get<1>(*ri)) {
+        int i = b, l = b, r = m;
+        while(l < m && r < e) {
+            if(get<1>(temp[l]) > get<1>(temp[r])) {
                 ++count;
-                *b++ = *ri++;
+                v[i++] = temp[r++];
             } else {
-                get<2>(*li) += count;
-                *b++ = *li++;
+                get<2>(temp[l]) += count;
+                v[i++] = temp[l++];
             }
         }
-        while(li != le) {
-            get<2>(*li) += count;
-            *b++ = *li++;
+        while(l < m) {
+            get<2>(temp[l]) += count;
+            v[i++] = temp[l++];
         }
-        while(ri != re) {
-            *b++ = *ri++;
-        }
-        return v;
+        copy(temp_beg + r, temp_beg + e, v_beg + r);
     }
+public:
     vector<int> countSmaller(vector<int>& nums) {
-        Vec v;
         int n = nums.size();
+        temp.resize(n);
+        temp_beg = temp.begin();
         v.reserve(n);
         for(int i = 0; i < n; ++i)
             v.emplace_back(i, nums[i], 0);
-        v = helper(move(v));
+        v_beg = v.begin();
+        helper(0, n);
         vector<int> ret(n);
         for(const auto &t : v)
             ret[get<0>(t)] = get<2>(t);
