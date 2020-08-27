@@ -1,7 +1,7 @@
 class Solution {
 public:
     string defangIPaddr(string address) {
-        regex r("\\.");
+        static const regex r("\\.");
         return regex_replace(address, r, "[.]");
     }
 };

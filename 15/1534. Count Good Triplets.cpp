@@ -27,27 +27,27 @@ namespace {
 class Solution {
 public:
     int countGoodTriplets(vector<int>& arr, int a, int b, int c) {
-        FenwickTree<UB - LB + 1> left, right;
+        int left[UB - LB + 1]{};
+        FenwickTree<UB - LB + 1> right;
         int n = arr.size();
         for(int k = 1; k < n; ++k)
             right.update(arr[k] - LB + 1, 1); // Fenwick Tree starts from 1
         int ret = 0;
         for(int j = 1; j < n - 1; ++j) {
-            left.update(arr[j - 1] - LB + 1, 1);
+            ++left[arr[j - 1] - LB];
             right.update(arr[j] - LB + 1, -1);
             int ai_lb = max(LB, arr[j] - a);
             int ai_ub = min(UB, arr[j] + a);
+            int ak_lb = max(LB, arr[j] - b);
+            int ak_ub = min(UB, arr[j] + b);
             for(int ai = ai_lb; ai <= ai_ub; ++ai) { // loop for every possible value of arr[i]
-                int count = left.partial_sum(ai - LB + 1) - left.partial_sum(ai - LB); // number of arr[i]s with the value 
-                if(!count)
+                if(!left[ai - LB]) // number of arr[i]s with the value 
                     continue;
-                int ak_lb = max(ai - c, arr[j] - b); // inequality for arr[k]
-                int ak_ub = min(ai + c, arr[j] + b);
-                if(ak_lb > ak_ub) // check for empty range, otherwise ret may be negative
+                int lb = max(ai - c, ak_lb);
+                int ub = min(ai + c, ak_ub);
+                if(lb > ub) // check for empty range, otherwise ret may be negative
                     continue;
-                ak_lb = max(LB, ak_lb);
-                ak_ub = min(UB, ak_ub);
-                ret += count * (right.partial_sum(ak_ub - LB + 1) - right.partial_sum(ak_lb - LB));
+                ret += left[ai - LB] * (right.partial_sum(ub - LB + 1) - right.partial_sum(lb - LB));
             }
         }
         return ret;
