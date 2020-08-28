@@ -2,9 +2,8 @@ class Solution {
 public:
     vector<int> finalPrices(vector<int>& prices) {
         stack<int> stk;
-        stk.push(0);
         int n = prices.size();
-        for(int i = 1; i < n; ++i) {
+        for(int i = 0; i < n; ++i) {
             while(!stk.empty()) {
                 auto p = stk.top();
                 if(prices[p] < prices[i])
