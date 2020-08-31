@@ -1,5 +1,7 @@
 # Method
 ## Arithmetic
+29
+861
 1079
 1252
 1295
@@ -8,6 +10,7 @@
 1374
 1464
 1486
+1502
 1551
 ## Bit Array/Map/Set
 1
@@ -15,6 +18,7 @@
 461
 535
 771
+890
 961
 1261
 1347
@@ -22,10 +26,13 @@
 1512
 ## Breadth-First Search/Queue
 958
-## Depth-First Search
+## Depth-First Search/Stack
+590
 797
+980
 1302
 ## Dynamic Programming
+1277
 1314
 ## Fenwick Tree
 1409
@@ -83,6 +90,7 @@
 1008
 1038
 1315
+1325
 1379
 1382
 ## Red-Black Tree
@@ -95,5 +103,6 @@
 149
 1282
 1365
+1402
 1460
 1561
