@@ -2,6 +2,7 @@
 ## Mathematics
 11
 29
+338
 459
 861
 877
@@ -33,6 +34,7 @@
 1261
 1347
 1436
+1442
 1512
 1557
 ## Breadth-First Search/Queue
@@ -98,6 +100,7 @@
 1480
 1528
 1529
+1572
 ## Linked List
 2
 19
@@ -114,6 +117,7 @@
 1475
 ## Precomputation
 728
+1387
 ## Recursion
 273
 617
