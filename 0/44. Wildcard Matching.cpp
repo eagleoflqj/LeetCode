@@ -14,7 +14,7 @@ public:
                 ++i; ++j;
             } else if(p[j] == '*') {
                 i_star = i; // last match * until s[i]
-                j_star = j++; // last * occurs at p[j_star - 1]
+                j_star = ++j; // last * occurs at p[j_star - 1]
             } else if(i_star >= 0) { // mismatch, traceback
                 i = ++i_star; // * match one more char
                 j = j_star; // the position after *
