@@ -1,6 +1,7 @@
 # Method
 ## Binary Search
 4
+33
 34
 ## Bit Array/Map/Set
 1
@@ -49,9 +50,12 @@
 14
 16
 17
+26
+27
 31
 44
 73
+165
 167
 206
 419
@@ -96,6 +100,7 @@
 19
 21
 24
+25
 950
 1381
 ## Mathematics
@@ -134,6 +139,9 @@
 ## Precomputation
 728
 1387
+## Priority Queue
+23
+1387*
 ## Recursion
 273
 617
