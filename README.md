@@ -1,5 +1,7 @@
 # Method
 ## Backtrack
+39
+40
 216
 ## Binary Search
 4
@@ -63,6 +65,7 @@
 31
 41
 44
+57
 73
 80
 165
