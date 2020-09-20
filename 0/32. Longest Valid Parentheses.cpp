@@ -13,7 +13,7 @@ public:
                     stk.push({group::left, 1});
                 else
                     ++stk.top().count;
-            } else if(!stk.empty()){
+            } else if(!stk.empty()) {
                 int length = 0;
                 if(stk.top().type == group::valid) {
                     length = stk.top().count;
@@ -30,9 +30,8 @@ public:
                     if(!stk.empty()) {
                         length += stk.top().count;
                         stk.top().count = length;
-                    } else {
+                    } else
                         stk.push({group::valid, length});
-                    }
                 }
                 ret = max(ret, length);
             }
